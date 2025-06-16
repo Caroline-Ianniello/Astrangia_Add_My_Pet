@@ -1,0 +1,73 @@
+---
+title: "AmP Visuals"
+author: "Caroline Fleming Ianniello"
+date: "2025-06-16"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+library(ggplot2)
+
+# Load time-weight data
+tW <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_apo/tW_predictions.csv")
+
+# Load temperature-respiration data
+TJO <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_apo/TJO_predictions.csv")
+
+TJO$resp_pred <- Re(TJO$resp_pred)  #MATLAB included some non-real numbers so just turning them into real numbers
+```
+
+
+```{r}
+# Plot observed vs. predicted weight over time
+ggplot(tW, aes(x = time)) +
+  geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
+  geom_line(aes(y = weight_pred), color = "blue", size = 1) +               # predicted
+  labs(title = "Time vs. Dry Weight",
+       x = "Time (days)",
+       y = "Dry Weight (g)") +
+  theme_minimal()
+
+
+```
+
+```{r}
+
+
+# Plot observed vs. predicted respiration
+ggplot(TJO, aes(x = temperature)) +
+  geom_point(aes(y = resp_obs), color = "black", size = 2, shape = 16) +   # observed
+  geom_line(aes(y = resp_pred), color = "red", size = 1) +                 # predicted
+  labs(title = "Temperature vs. O2 Consumption",
+       x = "Temperature (°C)",
+       y = "O2 Consumption (µmol/g/d)") +
+  theme_minimal()
+
+```
+
+
+```{r}
+ggplot(tW, aes(x = time)) +
+  geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
+  geom_smooth(aes(y = weight_pred), method = "loess", span = 0.4, se = FALSE, color = "blue", size = 1) +  # smoothed predicted
+  labs(title = "Time vs. Dry Weight",
+       x = "Time (days)",
+       y = "Dry Weight (g)") +
+  theme_minimal()
+
+
+```
+
+```{r}
+ggplot(TJO, aes(x = temperature)) +
+  geom_point(aes(y = resp_obs), color = "black", size = 2, shape = 16) +  # observed
+  geom_smooth(aes(y = resp_pred), method = "loess", span = 0.4, se = FALSE, color = "blue", size = 1) +  # smoothed predicted
+  labs(title = "Temperature vs. O2 Consumption",
+       x = "Temperature (°C)",
+       y = "O2 Consumption (µmol/g/d)") +
+  theme_minimal()
+
+```
+
