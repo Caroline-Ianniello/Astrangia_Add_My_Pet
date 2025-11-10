@@ -10,7 +10,7 @@ estim_options('max_fun_evals', 5e3);
 
 estim_options('pars_init_method', 2); %2 starts from pars init file, 1 starts from the last run %mat2pars_init to overwrite
 estim_options('results_output', 3); 
-estim_options('method', 'nm'); %no to simulate straight from pars init, nm to predict
+estim_options('method', 'nmn'); %no to simulate straight from pars init, nm to predict
 
 estim_pars;
 

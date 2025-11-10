@@ -1,3 +1,4 @@
+%RUN FILE - SYM
 close all; 0
 global pets 
 
@@ -10,7 +11,7 @@ estim_options('max_fun_evals', 5e3);
 
 estim_options('pars_init_method', 2); %2 starts from pars init file, 1 starts from the last run %mat2pars_init to overwrite
 estim_options('results_output', 3); 
-estim_options('method', 'nm'); %no to go straight from pars init, nm to predict
+estim_options('method', 'no'); %no to go straight from pars init, nm to predict
 
 %no means that it just runs the model from pars init and compares with your data, does not estimate
 %change no to nm to do parameter estimation, once parameter set already
