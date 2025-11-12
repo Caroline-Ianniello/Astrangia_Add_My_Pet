@@ -16,7 +16,7 @@ par.v = 0.02;            free.v     = 1;   units.v = 'cm/d';         label.v = '
 %par.v = 0.023, 0.2967;       free.v     = 1;   units.v = 'cm/d';         label.v = 'energy conductance'; 
 par.kap = 0.79918;       free.kap   = 1;   units.kap = '-';          label.kap = 'allocation fraction to soma'; 
 par.kap_R = 0.95;     free.kap_R = 0;   units.kap_R = '-';        label.kap_R = 'reproduction efficiency'; %0
-par.p_M = 80;        free.p_M   = 0;   units.p_M = 'J/d.cm^3';   label.p_M = '[p_M], vol-spec somatic maint'; %150
+par.p_M = 80;        free.p_M   = 1;   units.p_M = 'J/d.cm^3';   label.p_M = '[p_M], vol-spec somatic maint'; %150
 par.p_T = 0;        free.p_T   = 0;   units.p_T = 'J/d.cm^2';   label.p_T = '{p_T}, surf-spec somatic maint'; %0
 par.k_J = 0.002;      free.k_J   = 0;   units.k_J = '1/d';        label.k_J = 'maturity maintenance rate coefficient'; %0
 par.E_G = 400;        free.E_G   = 1;   units.E_G = 'J/cm^3';     label.E_G = '[E_G], spec cost for structure'; 
