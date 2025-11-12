@@ -1,5 +1,5 @@
-% MY DATA FILE - SYM
-function [data, auxData, metaData, txtData, weights] = mydata_Astrangia_poculata_sym
+% MY DATA FILE - APO
+function [data, auxData, metaData, txtData, weights] = mydata_Astrangia_poculata_apo
 
 %% set metaData
 metaData.phylum     = 'Cnidaria'; 
@@ -56,7 +56,7 @@ data.tp = 1095.75;    units.tp = 'd';    label.tp = 'time since birth at puberty
 temp.tp = C2K(12.77);  units.temp.tp = 'K'; label.temp.tp = 'temperature'; bibkey.tp = 'Guess';
   comment.tp = '12.77C Average yearly temperature from 2014-2024 from Newport RI buoy';
 data.L0  = 0.011;  units.L0  = 'cm';  label.L0  = 'egg diameter';            bibkey.L0  = {'Borbee et al. 2025 in prep'};
-data.Lb  = 0.0137;  units.Lb  = 'cm';  label.Lb  = 'total length at birth';   bibkey.Lb  = 'Borbee et al. 2025 in prep'; 
+data.Lb  = 0.0137;  units.Lb  = 'cm';  label.Lb  = 'total length at birth';   bibkey.Lb  = 'Ianniello et al., unpublished'; 
   comment.Lb = 'Figure 2';
 
 % data.Wdb  = 0.00013;  units.Wdb  = 'g'; label.Wdb  = 'dry weight at birth'; bibkey.Wdb  = 'Kurihara et al. 2020-- CHANGE ME';
@@ -69,87 +69,87 @@ data.RQ  = 0.8;   units.RQ  = '-';   label.RQ  = 'Respiratory quotient';    bibk
 
 % Temperature (°C) vs O2 consumption (µmol O2/g dry mass/hour) NOTE - DEB
 % predicts per day, so we will do the conversion below
-% Temperature (°C) vs O2 consumption (µmol O2/g dry mass/hour) NOTE - DEB
-% predicts per day, so we will do the conversion below
 TJO = [ ...
-6, 105.5473096;
-6, 46.67758278;
-6, 50.61793923;
-6, 66.99233667;
-6, 29.99531251;
-6, 43.78205483;
-6, 39.99547112;
-9, 80.44139047;
-9, 26.71482287;
-9, 22.84591611;
-9, 72.05611898;
-9, 87.97157739;
-9, 150.8956656;
-9, 90.0915833;
-9, 42.37810829;
-12, 23.56294065;
-12, 2.632650334;
-12, 128.6901104;
-12, 86.45112858;
-12, 63.5581013;
-12, 126.6792769;
-12, 4.50368925;
-12, 26.20996732;
-15, 15.142842;
-15, 123.3666869;
-15, 189.4472402;
-15, 98.69995451;
-15, 57.82398714;
-15, 82.7541742;
-15, 66.0184719;
-15, 5.390003523;
-18, 71.32664508;
-18, 87.48983533;
-18, 222.89678;
-18, 196.5089039;
-18, 270.9629509;
-18, 180.4513628;
-18, 118.9372078;
-18, 232.1670226;
-22, 310.9572105;
-22, 319.2749706;
-22, 483.6534677;
-22, 156.1898641;
-22, 353.63355;
-22, 430.9803645;
-22, 353.3730246;
-22, 460.58756;
-26, 406.1587457;
-26, 355.7429593;
-26, 636.7961976;
-26, 216.9923502;
-26, 413.7867018;
-26, 647.20812;
-26, 428.9176142;
-26, 501.2543247;
-29, 419.0610974;
-29, 418.9503018;
-29, 877.8176562;
-29, 238.6675538;
-29, 470.8024726;
-29, 521.6962754;
-29, 399.9116328;
-29, 711.6360905;
-32, 292.3506347;
-32, 260.0570464;
-32, 501.2088165;
-32, 270.5266462;
-32, 344.8756144;
-32, 387.2554438;
-32, 309.4467441;
-32, 413.5046052];
+
+6	19.66420121
+6	166.9395876
+6	59.2210435
+6	60.39052924
+6	75.67442212
+6	192.4256652
+6	172.7861558
+9	239.8274401
+9	13.22993753
+9	336.1052175
+9	289.0848874
+9	402.0965074
+9	170.0129009
+9	215.3960667
+9	350.170274
+12	286.1030104
+12	228.95373
+12	351.7246464
+12	3.035129436
+12	406.8526639
+12	263.1186768
+12	324.7421652
+12	111.733547
+15	286.9770555
+15	417.5451697
+15	456.0737731
+15	403.1286612
+15	503.638465
+15	348.4136511
+15	420.9062908
+15	360.5959589
+18	276.6483247
+18	540.7973423
+18	937.9179503
+18	297.8642643
+18	585.0487858
+18	612.2817252
+18	670.0962118
+18	728.2455448
+22	537.7128162
+22	1368.940074
+22	1456.399285
+22	709.8927068
+22	1156.169919
+22	960.5245702
+22	978.2117356
+22	1112.902343
+26	732.6590645
+26	1377.668234
+26	1697.817975
+26	1058.135887
+26	1768.965416
+26	1033.641625
+26	885.6499734
+26	1311.037547
+29	693.7837517
+29	1735.806933
+29	1248.763238
+29	932.0668103
+29	1272.957927
+29	798.8639752
+29	993.518862
+29	754.5606259
+32	617.3298738
+32	887.4666999
+32	821.7703384
+32	842.2725619
+32	831.3939647
+32	772.5292012
+32	761.0995553
+32	620.9243022
+];
 TJO(:,2)=TJO(:,2)*24; % convert hourly to daily rate
 data.TJO = TJO;
 units.TJO = {'°C', 'µmol O2/g dry mass/d'}; 
 label.TJO = {'Temperature', 'O_2 consumption per g dry weight per day'};
 bibkey.TJO = 'Aichelman et al. 2019';
-comment.TJO = 'Extrapolated from Aichelman et al. 2019, Sym only'
-weight.TJO= 0.121; units.weight.TJO = {'g'};  label.weight.TJO= {'dry weight, assuming a polyp number of 50 from weight per polyp from my experiment day 0 values'}; 
+comment.TJO = 'Extrapolated from Aichelman et al. 2019, Apo only'
+weight.TJO= 0.114; units.weight.TJO = {'g'};  label.weight.TJO= {'dry weight, assuming a polyp number of 50 from weight per polyp from my experiment day 0 values'}; 
 temp.TJO = C2K(TJO(:,1));  % convert temperature to Kelvin
 
 % Data to inform functional response -- X (food density) and I (irradiance)
@@ -163,42 +163,89 @@ I.TJO= 1.03e15;
 % % uni-variate data
 % % time-dry weight
 % data.tW = [ ... % time (d), % dry weight
-% 
-% 0	0.0061
-% 0	0.0112
-% 0	0.0181
-% 0	0.0129
-% 0	0.0155
-% 0	0.0071
-% 0	0.0077
-% 0	0.0078
-% 0	0.01
-% 0	0.0128
+% 0	0.0051
+% 0	0.0281
+% 0	0.0175
+% 0	0.0215
+% 0	0.0105
 % 0	0.0111
-% 0	0.0124
-% 0	0.0119
+% 0	0.0159
+% 0	0.0058
+% 0	0.0129
+% 0	0.003
 % 0	0.0087
-% 0	0.0077
-% 0	0.0149
-% 0	0.0176
-% 0	0.0163
-% 0	0.0043
-% 30	0.0092
-% 30	0.0037
+% 0	0.0139
+% 0	0.0082
+% 0	0.0102
+% 0	0.0141
+% 0	0.0087
+% 0	0.0106
+% 0	0.009
+% 0	0.0063
+% 0	0.0076
+% 30	0.0081
+% 30	0.0066
+% 30	0.0029
+% 30	0.0177
+% 30	0.008
+% 30	0.0049
+% 30	0.0049
 % 30	0.0108
 % 30	0.0043
-% 30	0.0062
-% 60	0.0101
-% 60	0.007
-% 60	0.0043
+% 30	0.0029
+% 30	0.0056
+% 30	0.005
+% 30	0.0037
+% 30	0.0066
+% 30	0.0061
+% 30	0.0052
+% 30	0.0078
+% 30	0.0048
+% 30	0.0159
+% 30	0.0028
+% 30	0.0061
+% 60	0.0055
+% 60	0.0059
 % 60	0.0048
-% 60	0.0139
-% 90	0.022
-% 90	0.0065
-% 90	0.0053
-% 90	0.0126
-% 90	0.0071
+% 60	0.0041
+% 60	0.0026
+% 60	0.0043
+% 60	0.0028
+% 60	0.0076
+% 60	0.005
+% 60	0.0057
+% 60	0.0117
+% 60	0.0063
+% 60	0.0031
+% 60	0.0018
+% 60	0.0075
+% 60	0.0051
+% 60	0.0031
+% 60	0.0086
+% 60	0.0033
+% 90	0.0075
+% 90	0.0074
+% 90	0.0102
+% 90	0.0082
+% 90	0.008
+% 90	0.0078
+% 90	0.0081
+% 90	0.0037
+% 90	0.003
+% 90	0.0058
+% 90	0.0206
+% 90	0.0043
+% 90	0.0061
+% 90	0.0039
+% 90	0.0148
+% 90	0.0124
+% 90	0.004
+% 90	0.0047
+% 90	0.0042
+% 90	0.0086
 % ];
+% %0	0.0275
+% %data.tW(:,2) = 19.2+0.01*data.tW(:,2); % convert % change in mass to mass 
 % units.tW  = {'d', 'g'};  label.tW = {'time', 'dry weight'};  
 % temp.tW   = C2K(20);  units.temp.tW = 'K'; label.temp.tW = 'temperature';
 % Wd0.tW   = mean(data.tW(1:20,2));  units.Wd0.tW = 'g'; label.Wd0.tW = 'mean initial weight';
@@ -213,8 +260,9 @@ I.TJO= 1.03e15;
 %% set weights for all real data
 %1 is the normal!
 weights = setweights(data, []);
-%weights.tp = 0.01*weights.tp; 
-%weights.tW = 0.3*weights.tW; 
+weights.tp = 5*weights.tp; 
+weights.L0 = 5*weights.L0;
+weights.Lb = 5*weights.Lb; 
 weights.TJO=5*weights.TJO; %does not affect the regular run but does
 %impact estimation procedure
 
@@ -226,6 +274,7 @@ auxData.X= X; auxData.I= I;
 auxData.weight = weight;
 auxData.temp = temp;
 %auxData.Wd0 = Wd0;
+%auxData.temp.Ri = C2K(18.9); %getting rid of reproudction data
 txtData.units = units;
 txtData.label = label;
 txtData.bibkey = bibkey;

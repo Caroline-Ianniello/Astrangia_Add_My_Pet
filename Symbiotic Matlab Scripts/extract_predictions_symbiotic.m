@@ -27,7 +27,7 @@ function extract_predictions()
 
     TJO_table = table(T_obs, R_obs, R_pred, ...
                       'VariableNames', {'temperature', 'resp_obs', 'resp_pred'});
-    writetable(TJO_table, 'TJO_predictions.csv');
+    writetable(TJO_table, '/Users/carolineianniello/DEB/Astrangia_Add_My_Pet/Results/TJO_predictions_SYM.csv');
   else
     warning('Missing TJO data or prediction.');
   end

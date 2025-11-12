@@ -11,81 +11,81 @@ editor_options:
 library(ggplot2)
 
 # Load time-weight data
-tW_apo <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_apo/tW_predictions_6_20.csv")
-tW_sym <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_sym/tW_predictions_6_20..csv")
+#tW_apo <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_apo/tW_predictions_6_20.csv")
+#tW_sym <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_sym/tW_predictions_6_20..csv")
 
 # Load temperature-respiration data
-TJO_apo <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_apo/TJO_predictions.csv")
-TJO_sym <- read.csv("/Users/carolineianniello/DEB/Astrangia_poculata_sym/TJO_predictions.csv")
+TJO_apo <- read.csv("/Users/carolineianniello/DEB/Astrangia_Add_My_Pet/Results/TJO_predictions_APO.csv")
+TJO_sym <- read.csv("/Users/carolineianniello/DEB/Astrangia_Add_My_Pet/Results/TJO_predictions_SYM.csv")
 
 TJO_apo$resp_pred <- Re(TJO_apo$resp_pred)  #MATLAB included some non-real numbers so just turning them into real numbers
 TJO_sym$resp_pred <- Re(TJO_sym$resp_pred)  #MATLAB included some non-real numbers so just turning them into real numbers
 
 
-tW_apo$weight_pred <- Re(tW_apo$weight_pred)
-tW_sym$weight_pred <- Re(tW_sym$weight_pred)
+#tW_apo$weight_pred <- Re(tW_apo$weight_pred)
+#tW_sym$weight_pred <- Re(tW_sym$weight_pred)
 ```
 
 
 
 ```{r time dry mass}
-#SMOOTH - APO
-ggplot(tW_apo, aes(x = time)) +
-  geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
-  geom_smooth(aes(y = weight_pred), method = "loess", span = 0.4, se = FALSE, color = "blue", size = 1) +  # smoothed predicted
-  labs(title = "Time vs. Dry Weight",
-       x = "Time (days)",
-       y = "Dry Weight (g)") +
-  theme_minimal()
-#LINE - APO
-ggplot(tW_apo, aes(x = time)) +
-  geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
-  geom_line(aes(y = weight_pred), color = "blue", size = 1) +              # predicted
-  labs(title = "Time vs. Dry Weight",
-       x = "Time (days)",
-       y = "Dry Weight (g)") +
-  theme_minimal()
-
-
-#LINE - SYM
-ggplot(tW_sym, aes(x = time)) +
-  geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
-  geom_line(aes(y = weight_pred), color = "blue", size = 1) +              # predicted
-  labs(title = "Time vs. Dry Weight",
-       x = "Time (days)",
-       y = "Dry Weight (g)") +
-  theme_minimal()
-
-
-
-#COMBINED GRAPH
-# Add symbiotic state to each dataset
-tW_apo$sym_state <- "Apo"
-tW_sym$sym_state <- "Sym"
-
-# Combine datasets
-tW_combined <- rbind(tW_apo, tW_sym)
-
-# Plot
-
-ggplot(tW_combined, aes(x = time)) +
-  geom_point(aes(y = weight_obs, color = sym_state), size = 2.5, shape = 16) +  # observed points
-  geom_smooth(aes(y = weight_pred, color = sym_state), size = 1) +  # smoothed predicted
-  scale_color_manual(values = c("Apo" = "gray45", "Sym" = "brown")) +
-  labs(title = "Time vs. Dry Weight",
-       x = "Time (days)",
-       y = "Dry Weight (g)") +
-  facet_wrap(~sym_state,  dir="v") +
-  theme_minimal() +
-  theme(
-    panel.spacing.x = unit(1, "lines"),  # wider space between panels
-    panel.border = element_rect(color = "black", fill = NA, size = 1),  # borders around panels
-    strip.background = element_blank()
-  ) +
-  
+# #SMOOTH - APO
+# ggplot(tW_apo, aes(x = time)) +
+#   geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
+#   geom_smooth(aes(y = weight_pred), method = "loess", span = 0.4, se = FALSE, color = "blue", size = 1) +  # smoothed predicted
+#   labs(title = "Time vs. Dry Weight",
+#        x = "Time (days)",
+#        y = "Dry Weight (g)") +
+#   theme_minimal()
+# #LINE - APO
+# ggplot(tW_apo, aes(x = time)) +
+#   geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
+#   geom_line(aes(y = weight_pred), color = "blue", size = 1) +              # predicted
+#   labs(title = "Time vs. Dry Weight",
+#        x = "Time (days)",
+#        y = "Dry Weight (g)") +
+#   theme_minimal()
+# 
+# 
+# #LINE - SYM
+# ggplot(tW_sym, aes(x = time)) +
+#   geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
+#   geom_line(aes(y = weight_pred), color = "blue", size = 1) +              # predicted
+#   labs(title = "Time vs. Dry Weight",
+#        x = "Time (days)",
+#        y = "Dry Weight (g)") +
+#   theme_minimal()
+# 
+# 
+# 
+# #COMBINED GRAPH
+# # Add symbiotic state to each dataset
+# tW_apo$sym_state <- "Apo"
+# tW_sym$sym_state <- "Sym"
+# 
+# # Combine datasets
+# tW_combined <- rbind(tW_apo, tW_sym)
+# 
+# # Plot
+# 
+# ggplot(tW_combined, aes(x = time)) +
+#   geom_point(aes(y = weight_obs, color = sym_state), size = 2.5, shape = 16) +  # observed points
+#   geom_smooth(aes(y = weight_pred, color = sym_state), size = 1) +  # smoothed predicted
+#   scale_color_manual(values = c("Apo" = "gray45", "Sym" = "brown")) +
+#   labs(title = "Time vs. Dry Weight",
+#        x = "Time (days)",
+#        y = "Dry Weight (g)") +
+#   facet_wrap(~sym_state,  dir="v") +
+#   theme_minimal() +
+#   theme(
+#     panel.spacing.x = unit(1, "lines"),  # wider space between panels
+#     panel.border = element_rect(color = "black", fill = NA, size = 1),  # borders around panels
+#     strip.background = element_blank()
+#   ) +
+#   
 ```
 
-```{r}
+```{r TJO Graphs - separate}
 #APO
 ggplot(TJO_apo, aes(x = temperature)) +
   geom_point(aes(y = resp_obs), color = "black", size = 2, shape = 16) +  # observed
@@ -103,8 +103,10 @@ ggplot(TJO_sym, aes(x = temperature)) +
        x = "Temperature (°C)",
        y = "O2 Consumption (µmol/g/d)") +
   theme_minimal()
+```
 
 
+```{r TJO Graphs - combined with jitter}
 #COMBINED GRAPH
 # Add symbiotic state to each dataset
 TJO_apo$sym_state <- "Aposymbiotic"
@@ -134,8 +136,8 @@ ggplot(TJO_combined, aes(x = temperature)) +
        x = "Temperature (°C)",
        y = expression("O"[2]~"Consumption (µmol/g/d)"), 
        color = "Symbiotic State") +
-   ylim(0,40500) +
-  
+   ylim(0,45000) +
+  xlim(5,32)+
   # Apply minimal theme and increase axis label sizes and ticks
   theme_minimal() +
   theme(
@@ -147,7 +149,7 @@ ggplot(TJO_combined, aes(x = temperature)) +
 
 ```
 
-```{r}
+```{r TJO - Combined no jitter}
 # Plot with jittered points and different shapes for Apo and Sym
 ggplot(TJO_combined, aes(x = temperature)) +
   # Jittered points with larger dodge and transparent dots
@@ -155,7 +157,8 @@ ggplot(TJO_combined, aes(x = temperature)) +
   # Smoothed predicted values
   geom_smooth(aes(y = resp_pred, color = sym_state), 
               method = "loess", span = 0.4, se = FALSE, size = 1.25) +  # smoothed predicted +
-  ylim(0,40500) +
+  ylim(0,45000) +
+    xlim(5,32)+
   
   # Define custom colors for sym_state
   scale_color_manual(values = c("Aposymbiotic" = "#636363", "Symbiotic" = "#964B00")) +
