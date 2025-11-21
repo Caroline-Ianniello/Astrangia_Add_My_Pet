@@ -107,46 +107,33 @@ ggplot(TJO_sym, aes(x = temperature)) +
 
 
 ```{r TJO Graphs - combined with jitter}
-#COMBINED GRAPH
-# Add symbiotic state to each dataset
-TJO_apo$sym_state <- "Aposymbiotic"
-TJO_sym$sym_state <- "Symbiotic"
-
-# Combine datasets
-TJO_combined <- rbind(TJO_apo, TJO_sym)
-
-# Plot with jittered points and different shapes for Apo and Sym
 ggplot(TJO_combined, aes(x = temperature)) +
-  # Jittered points with larger dodge and transparent dots
   geom_point(aes(y = resp_obs, color = sym_state), 
              size = 2.4, 
-             shape = 16,  # Circle shape
-             position = position_jitter(width = 0.3),  # Slightly larger dodge (width increased)
-             alpha = 0.6) +  # Transparent dots (alpha set to 0.5)
-  
-  # Smoothed predicted values
+             shape = 16,  
+             position = position_jitter(width = 0.3),  
+             alpha = 0.6) +  
   geom_smooth(aes(y = resp_pred, color = sym_state), 
-              method = "loess", span = 0.4, se = FALSE, size = 1.25) +  # smoothed predicted
-  
-  # Define custom colors for sym_state
+              method = "loess", span = 0.4, se = FALSE, size = 1.25) +  
   scale_color_manual(values = c("Aposymbiotic" = "#636363", "Symbiotic" = "#964B00")) +
-  
-  # Add titles and axis labels
   labs(title = "Temperature vs. O2 Consumption",
        x = "Temperature (°C)",
        y = expression("O"[2]~"Consumption (µmol/g/d)"), 
        color = "Symbiotic State") +
-   ylim(0,45000) +
-  xlim(5,32)+
-  # Apply minimal theme and increase axis label sizes and ticks
+  ylim(0,45000) +
+  xlim(5,32) +
   theme_minimal() +
   theme(
-    axis.title.x = element_text(size = 16),  # Increase size of x-axis label
-    axis.title.y = element_text(size = 16),  # Increase size of y-axis label
-    axis.text.x = element_text(size = 13),   # Increase size of x-axis ticks
-    axis.text.y = element_text(size = 13)    # Increase size of y-axis ticks
+    axis.title.x = element_text(size = 16),  
+    axis.title.y = element_text(size = 16),  
+    axis.text.x = element_text(size = 13),   
+    axis.text.y = element_text(size = 13),
+    # Increase legend title and text size (double original?)
+    legend.title = element_text(size = 17),  # default is ~11, so size 22 here
+    legend.text = element_text(size = 14),    # default ~9, size 18 here
+    # Increase legend keys (symbols) size
+    legend.key.size = unit(1.5, "lines")  # default ~1 line, 1.5 or 2 lines to double symbol size
   )
-
 ```
 
 ```{r TJO - Combined no jitter}

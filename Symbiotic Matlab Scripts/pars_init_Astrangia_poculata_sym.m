@@ -19,10 +19,10 @@ par.kap_R = 0.95;     free.kap_R = 0;   units.kap_R = '-';        label.kap_R = 
 par.p_M = 80;        free.p_M   = 1;   units.p_M = 'J/d.cm^3';   label.p_M = '[p_M], vol-spec somatic maint'; %150
 par.p_T = 0;        free.p_T   = 0;   units.p_T = 'J/d.cm^2';   label.p_T = '{p_T}, surf-spec somatic maint'; %0
 par.k_J = 0.002;      free.k_J   = 0;   units.k_J = '1/d';        label.k_J = 'maturity maintenance rate coefficient'; %0
-par.E_G = 400;        free.E_G   = 1;   units.E_G = 'J/cm^3';     label.E_G = '[E_G], spec cost for structure'; 
+par.E_G = 3000;        free.E_G   = 1;   units.E_G = 'J/cm^3';     label.E_G = '[E_G], spec cost for structure'; 
 %par.E_G = 2616.2542;        free.E_G   = 1;   units.E_G = 'J/cm^3';     label.E_G = '[E_G], spec cost for structure'; 
-par.E_Hb = 9e-11; free.E_Hb  = 1;   units.E_Hb = 'J';         label.E_Hb = 'maturity at birth'; %9.998e-12
-par.E_Hp = 3;      free.E_Hp  = 1;   units.E_Hp = 'J';         label.E_Hp = 'maturity at puberty'; 
+par.E_Hb = 4e-5; free.E_Hb  = 1;   units.E_Hb = 'J';         label.E_Hb = 'maturity at birth'; %9.998e-12
+par.E_Hp = 5;      free.E_Hp  = 1;   units.E_Hp = 'J';         label.E_Hp = 'maturity at puberty'; 
 par.h_a = 1.003e-15;  free.h_a   = 1;   units.h_a = '1/d^2';      label.h_a = 'Weibull aging acceleration'; 
 par.s_G = 0.0001;     free.s_G   = 0;   units.s_G = '-';          label.s_G = 'Gompertz stress coefficient'; %0
 
@@ -31,9 +31,9 @@ par.T_AH = 36652.72 ;  free.T_AH  = 1;   units.T_AH = 'K';         label.T_AH = 
 par.T_H = 302.35;       free.T_H   = 0;   units.T_H = 'K';          label.T_H = 'upper boundary tolerance range'; %0
 %par.Wd0 = 0.005;        free.Wd0   = 0;   units.Wd0 = 'g';
 %label.Wd0 = 'initial dry weight in tW data'; %0
-par.del_M = 0.0057001;  free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient for larvae'; 
+par.del_M = 0.24;  free.del_M = 1;   units.del_M = '-';        label.del_M = 'shape coefficient for larvae'; 
 par.del_W = 1;          free.del_W = 0;   units.del_W = '-';        label.del_W = 'dry - ash free dry weight ratio'; %0
-par.del_Y = 0.015348;   free.del_Y = 1;   units.del_Y = '-';        label.del_Y = 'shape coefficient for egg'; 
+%par.del_Y = 0.015348;   free.del_Y = 1;   units.del_Y = '-';        label.del_Y = 'shape coefficient for egg'; 
 par.f = 1;            free.f     = 0;   units.f = '-';            label.f = 'scaled functional response for 0-var data'; %0
 %par.f_tW = 1;         free.f_tW  = 0;   units.f_tW = '-';         label.f_tW = 'scaled functional response for tW data'; %0 
 

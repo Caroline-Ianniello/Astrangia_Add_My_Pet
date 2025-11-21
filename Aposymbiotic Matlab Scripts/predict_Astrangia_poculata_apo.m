@@ -36,8 +36,13 @@ f_coral = (I.TJO+X.TJO) / (1 + (I.TJO+X.TJO));
   pars_UE0 = [V_Hb; g; k_J; k_M; v]; % compose parameter vector
   U_E0 = initial_scaled_reserve(f, pars_UE0); % d.cm^2, initial scaled reserve
   E0 = U_E0 * p_Am;                  % J, initial energy in egg
-  V_egg = E0 * w_E/ (mu_E * d_E)/ del_Y^3; % cm^3, volume of egg
-  Lw_0= V_egg^(1/3);                 % cm, diameter of egg
+  %V_egg = E0 * w_E/ (mu_E * d_E)/ del_M^3; % cm^3, volume of egg
+  %Lw_0= V_egg^(1/3);                 % cm, diameter of egg
+  V_egg = E0 * w_E/ (mu_E * d_E); %calculate raw volume
+  % 2. Calculate Length (Diameter) assuming it is a SPHERE
+  % Volume of sphere = (pi/6) * diameter^3
+  % Therefore: Diameter = (V * 6 / pi)^(1/3)
+  Lw_0 = ((V_egg * 6) / pi)^(1/3);
   
   % birth
   L_b = L_m * l_b;                  % cm, structural length at birth at f
@@ -52,7 +57,7 @@ f_coral = (I.TJO+X.TJO) / (1 + (I.TJO+X.TJO));
  tT_p = (t_p - t_b)/ kT_M;     % d, time since birth at puberty
 
  % ultimate
-   l_i = f - l_T;                    % -, scaled ultimate length
+  l_i = f - l_T;                    % -, scaled ultimate length
   L_i = L_m * l_i;                    % cm, ultimate structural length at f
    Wd_i = L_i^3 * d_V * (1 + f * ome); % g, ultimate dry weight, ome converts to wet then * d_V to dry
  

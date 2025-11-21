@@ -274,7 +274,7 @@ auxData.X= X; auxData.I= I;
 auxData.weight = weight;
 auxData.temp = temp;
 %auxData.Wd0 = Wd0;
-%auxData.temp.Ri = C2K(18.9); %getting rid of reproudction data
+%auxData.temp.Ri = C2K(18.9); %getting rid of reproduction data
 txtData.units = units;
 txtData.label = label;
 txtData.bibkey = bibkey;
