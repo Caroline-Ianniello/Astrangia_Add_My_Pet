@@ -27,12 +27,12 @@ metaData.COMPLETE = 3.0; % using criteria of LikaKear2011
 metaData.author   = {'Caroline Ianniello'; 'Taylor Lindsay'};    
 metaData.date_subm = [2025 27 05];              
 metaData.email    = {'caroline.ianniello@gmail.com'};            
-metaData.address  = {'Boston University, Boston MA 01844'};   
+metaData.address  = {'Tufts University, Medford MA'};   
 
 metaData.author_mod_1   = {'Taylor Lindsay'};        
 metaData.date_mod_1     = [2025 27 05];                           
 metaData.email_mod_1    = {'tayrlindsay@gmail.com'};                 
-metaData.address_mod_1  = {'Tufts'}; 
+metaData.address_mod_1  = {'Tufts University, Medford MA'}; 
 
 
 metaData.curator     = {'Bas Kooijman'};
@@ -59,7 +59,7 @@ data.L0  = 0.011;  units.L0  = 'cm';  label.L0  = 'egg diameter';            bib
 data.Lb  = 0.0137;  units.Lb  = 'cm';  label.Lb  = 'total length at birth';   bibkey.Lb  = 'Borbee et al. 2025 in prep'; 
   comment.Lb = 'Figure 2';
 
-% data.Wdb  = 0.00013;  units.Wdb  = 'g'; label.Wdb  = 'dry weight at birth'; bibkey.Wdb  = 'Kurihara et al. 2020-- CHANGE ME';
+% data.Wdb  = 0.00013;  units.Wdb  = 'g'; label.Wdb  = 'dry weight at birth'; bibkey.Wdb  = 'Kurihara et al. 2020';
 % data.Wdp  = 0.00340615;  units.Wdp  = 'g'; label.Wdp  = 'dry weight at puberty'; bibkey.Wdp  = 'sym fed high light, assuming 5 polyps';
 % data.Wdi  = 0.2287;  units.Wdi  = 'g';  label.Wdi  = 'ultimate dry weight';   bibkey.Wdi  = 'apo, assuming 100 polyps, multiplied average INITIAL dry weight of 5 polyp apo corals by 20 for 100 polyps';
 
@@ -160,54 +160,6 @@ I.TJO= 1.03e15;
  %units.I.TJO = 'Irradiance';    label.I.TJO = ' X'; 
  %bibkey.I.TJO = 'Extrapolated from Aichelman et al. 2019, Sym only'; 
 
-% % uni-variate data
-% % time-dry weight
-% data.tW = [ ... % time (d), % dry weight
-% 
-% 0	0.0061
-% 0	0.0112
-% 0	0.0181
-% 0	0.0129
-% 0	0.0155
-% 0	0.0071
-% 0	0.0077
-% 0	0.0078
-% 0	0.01
-% 0	0.0128
-% 0	0.0111
-% 0	0.0124
-% 0	0.0119
-% 0	0.0087
-% 0	0.0077
-% 0	0.0149
-% 0	0.0176
-% 0	0.0163
-% 0	0.0043
-% 30	0.0092
-% 30	0.0037
-% 30	0.0108
-% 30	0.0043
-% 30	0.0062
-% 60	0.0101
-% 60	0.007
-% 60	0.0043
-% 60	0.0048
-% 60	0.0139
-% 90	0.022
-% 90	0.0065
-% 90	0.0053
-% 90	0.0126
-% 90	0.0071
-% ];
-% units.tW  = {'d', 'g'};  label.tW = {'time', 'dry weight'};  
-% temp.tW   = C2K(20);  units.temp.tW = 'K'; label.temp.tW = 'temperature';
-% Wd0.tW   = mean(data.tW(1:20,2));  units.Wd0.tW = 'g'; label.Wd0.tW = 'mean initial weight';
-% %Wd0.tW   = 0.005;  units.Wd0.tW = 'g'; label.Wd0.tW = 'mean initial weight';
-% bibkey.tW = 'Ianniello et al. in prep';
-% comment.tW = 'Fed once every 5 days. Data taken from every light level. Biomass from entire slurry';
-% 
-% metaData.grp.sets = {{'tW'}};
-% metaData.grp.label = {'Dry weight over time'};
 
 
 %% set weights for all real data
@@ -245,6 +197,6 @@ metaData.facts = struct('F1',F1,'F2',F2);
 
 %% References
 bibkey = 'Wiki'; type = 'Misc'; bib = ...
-'howpublished = {\url{https://sites.bu.edu/astrangia/}}';
+'howpublished = {\url{https://sites.tufts.edu/astrangia/}}';
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
 %

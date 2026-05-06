@@ -27,12 +27,12 @@ metaData.COMPLETE = 3.0; % using criteria of LikaKear2011
 metaData.author   = {'Caroline Ianniello'; 'Taylor Lindsay'};    
 metaData.date_subm = [2025 27 05];              
 metaData.email    = {'caroline.ianniello@gmail.com'};            
-metaData.address  = {'Boston University, Boston MA 01844'};   
+metaData.address  = {'Tufts University, Medford MA 01844'};   
 
 metaData.author_mod_1   = {'Taylor Lindsay'};        
 metaData.date_mod_1     = [2025 27 05];                           
 metaData.email_mod_1    = {'tayrlindsay@gmail.com'};                 
-metaData.address_mod_1  = {'Tufts'}; 
+metaData.address_mod_1  = {'Tufts University'}; 
 
 
 metaData.curator     = {'Bas Kooijman'};
@@ -63,7 +63,7 @@ data.Lb  = 0.0137;  units.Lb  = 'cm';  label.Lb  = 'total length at birth';   bi
 % data.Wdp  = 0.00340615;  units.Wdp  = 'g'; label.Wdp  = 'dry weight at puberty'; bibkey.Wdp  = 'sym fed high light, assuming 5 polyps';
 % data.Wdi  = 0.2287;  units.Wdi  = 'g';  label.Wdi  = 'ultimate dry weight';   bibkey.Wdi  = 'apo, assuming 100 polyps, multiplied average INITIAL dry weight of 5 polyp apo corals by 20 for 100 polyps';
 
-data.RQ  = 0.8;   units.RQ  = '-';   label.RQ  = 'Respiratory quotient';    bibkey.RQ  = 'Tremblay et al. 2012';  comment.RQ = "For the temperate coral Cladocora"
+data.RQ  = 0.8;   units.RQ  = '-';   label.RQ  = 'Respiratory quotient';    bibkey.RQ  = 'Tremblay et al. 2012';  comment.RQ = "For the temperate coral Cladocora caespitosa"
   
 % uni-variate data
 
@@ -160,102 +160,6 @@ I.TJO= 1.03e15;
  %units.I.TJO = 'Irradiance';    label.I.TJO = ' X'; 
  %bibkey.I.TJO = 'Extrapolated from Aichelman et al. 2019, Sym only'; 
 
-% % uni-variate data
-% % time-dry weight
-% data.tW = [ ... % time (d), % dry weight
-% 0	0.0051
-% 0	0.0281
-% 0	0.0175
-% 0	0.0215
-% 0	0.0105
-% 0	0.0111
-% 0	0.0159
-% 0	0.0058
-% 0	0.0129
-% 0	0.003
-% 0	0.0087
-% 0	0.0139
-% 0	0.0082
-% 0	0.0102
-% 0	0.0141
-% 0	0.0087
-% 0	0.0106
-% 0	0.009
-% 0	0.0063
-% 0	0.0076
-% 30	0.0081
-% 30	0.0066
-% 30	0.0029
-% 30	0.0177
-% 30	0.008
-% 30	0.0049
-% 30	0.0049
-% 30	0.0108
-% 30	0.0043
-% 30	0.0029
-% 30	0.0056
-% 30	0.005
-% 30	0.0037
-% 30	0.0066
-% 30	0.0061
-% 30	0.0052
-% 30	0.0078
-% 30	0.0048
-% 30	0.0159
-% 30	0.0028
-% 30	0.0061
-% 60	0.0055
-% 60	0.0059
-% 60	0.0048
-% 60	0.0041
-% 60	0.0026
-% 60	0.0043
-% 60	0.0028
-% 60	0.0076
-% 60	0.005
-% 60	0.0057
-% 60	0.0117
-% 60	0.0063
-% 60	0.0031
-% 60	0.0018
-% 60	0.0075
-% 60	0.0051
-% 60	0.0031
-% 60	0.0086
-% 60	0.0033
-% 90	0.0075
-% 90	0.0074
-% 90	0.0102
-% 90	0.0082
-% 90	0.008
-% 90	0.0078
-% 90	0.0081
-% 90	0.0037
-% 90	0.003
-% 90	0.0058
-% 90	0.0206
-% 90	0.0043
-% 90	0.0061
-% 90	0.0039
-% 90	0.0148
-% 90	0.0124
-% 90	0.004
-% 90	0.0047
-% 90	0.0042
-% 90	0.0086
-% ];
-% %0	0.0275
-% %data.tW(:,2) = 19.2+0.01*data.tW(:,2); % convert % change in mass to mass 
-% units.tW  = {'d', 'g'};  label.tW = {'time', 'dry weight'};  
-% temp.tW   = C2K(20);  units.temp.tW = 'K'; label.temp.tW = 'temperature';
-% Wd0.tW   = mean(data.tW(1:20,2));  units.Wd0.tW = 'g'; label.Wd0.tW = 'mean initial weight';
-% %Wd0.tW   = 0.005;  units.Wd0.tW = 'g'; label.Wd0.tW = 'mean initial weight';
-% bibkey.tW = 'Ianniello et al. in prep';
-% comment.tW = 'Fed once every 5 days. Data taken from every light level. Biomass from entire slurry';
-% 
-% metaData.grp.sets = {{'tW'}};
-% metaData.grp.label = {'Dry weight over time'};
-
 
 %% set weights for all real data
 %1 is the normal!
@@ -293,6 +197,5 @@ metaData.facts = struct('F1',F1,'F2',F2);
 
 %% References
 bibkey = 'Wiki'; type = 'Misc'; bib = ...
-'howpublished = {\url{https://sites.bu.edu/astrangia/}}';
+'howpublished = {\url{https://sites.tufts.edu/astrangia/}}';
 metaData.biblist.(bibkey) = ['''@', type, '{', bibkey, ', ' bib, '}'';'];
-%

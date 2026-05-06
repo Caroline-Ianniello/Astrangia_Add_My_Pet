@@ -26,3 +26,8 @@ estim_pars;
 % 4: like 3 (or -3), but also prints html with implied traits
 % 5: like 3 (or -3), but also prints html with implied traits including related species
 % 6: like 5, but also prints html with population traitsamp
+load('results_Astrangia_poculata_sym.mat')
+cPar = parscomp_st(par);
+
+cPar.p_Am   % Assimilation rate (J/d·cm^2)
+cPar.E_m    % Maximum reserve density/capacity (J/cm^3)

@@ -8,7 +8,7 @@ function [prdData, info] = predict_Astrangia_poculata_apo(par, data, auxData) %p
   %TEMPERATURE
   pars_T = [T_A, T_H, T_AH]; 
     % compute temperature correction factors, for each dataset that includes a rate you have to have some temp sensitivity
-  TC = tempcorr(temp.tp, T_ref, pars_T); %CHECK ME
+  TC = tempcorr(temp.tp, T_ref, pars_T); 
   kT_M = TC * k_M; 
   TC_tp = tempcorr(temp.tp, T_ref, pars_T); %time to puberty
   %TC_tW = tempcorr(temp.tW, T_ref, pars_T);
@@ -92,7 +92,7 @@ f_coral = (I.TJO+X.TJO) / (1 + (I.TJO+X.TJO));
 % respiration at different temperatures
 pars_p = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hp]; % parameter vector
 p_ref = p_Am * L_m^2; % max assimilation power
-%L = (f * p_Am / p_M)^(1/3);  % length at ultimate based on DEB balance, CHECK ME
+%L = (f * p_Am / p_M)^(1/3);  % length at ultimate based on DEB balance
 %L = (Wd_i/ del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight
 L = (weight.TJO/ del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight 
 

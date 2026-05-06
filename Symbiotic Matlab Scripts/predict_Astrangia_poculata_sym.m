@@ -8,7 +8,7 @@ function [prdData, info] = predict_Astrangia_poculata_sym(par, data, auxData) %p
   %TEMPERATURE
   pars_T = [T_A, T_H, T_AH]; 
     % compute temperature correction factors, for each dataset that includes a rate you have to have some temp sensitivity
-  TC = tempcorr(temp.tp, T_ref, pars_T); %CHECK ME
+  TC = tempcorr(temp.tp, T_ref, pars_T); 
   kT_M = TC * k_M; 
   TC_tp = tempcorr(temp.tp, T_ref, pars_T); %time to puberty
   %TC_tW = tempcorr(temp.tW, T_ref, pars_T);
@@ -47,7 +47,7 @@ f_coral = (I.TJO+X.TJO) / (1 + (I.TJO+X.TJO));
   % birth
   L_b = L_m * l_b;                  % cm, structural length at birth at f
   Lw_b = L_b/ del_M;               % cm, total length at birth at f
-%   a_b = t_b/ k_M;                   % d, age at birth  %% DINA: If you need it you should divide by KT_M
+%   a_b = t_b/ k_M;                   % d, age at birth  
  % Wd_b = L_b^3 * d_V * (1 + f_coral * ome);       % dry weight at birth
 
   
@@ -92,7 +92,7 @@ f_coral = (I.TJO+X.TJO) / (1 + (I.TJO+X.TJO));
 % respiration at different temperatures
 pars_p = [kap; kap_R; g; k_J; k_M; L_T; v; U_Hb; U_Hp]; % parameter vector
 p_ref = p_Am * L_m^2; % max assimilation power
-%L = (f * p_Am / p_M)^(1/3);  % length at ultimate based on DEB balance, CHECK ME
+%L = (f * p_Am / p_M)^(1/3);  % length at ultimate based on DEB balance
 %L = (Wd_i/ del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight
 L = (weight.TJO/ del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight %0.2287 is ultimate weight
 
@@ -105,18 +105,6 @@ EJO = -1e6 * J_M(3,:)' ./ weight.TJO; % µmol O2/g dry weight/day
 % Apply temperature correction
 %TC_TJO = tempcorr(C2K(TJO(:,1)), T_ref, pars_T); %pars_T is the vector of arrhenius parameters
 TC_TJO = tempcorr(C2K(TJO(:,1)), T_ref, pars_T); %pars_T is the vector of arrhenius parameters
-
-
-%   % time-dry weight
-%   L_0 = (Wd0.tW/(1+f_tW*ome)/d_V)^(1/3); L_i = f_tW * L_m; %cm,  struct length
-%   rT_B = TC_tW * k_M/ 3/ (1 + f_tW/ g);      % 1/d, von Bert growth rate
-% 
-% %disp(['rT_B = ', num2str(rT_B)]);
-% 
-%   L = L_i - (L_i - L_0) * exp( - rT_B * tW(:,1));  % cm, struc length, von Bert growth rate
-%   EWd = L.^3*(1+f_tW*ome)*d_V; % g, dry weight %f_tW is functional response taking the place of reserve density because it should be equal to reserve density
-% 
-%  % disp(['L_0 = ', num2str(L_0), ', L_i = ', num2str(L_i)]);
 
 
 %predict

@@ -17,73 +17,16 @@ library(ggplot2)
 # Load temperature-respiration data
 TJO_apo <- read.csv("/Users/carolineianniello/DEB/Astrangia_Add_My_Pet/Results/TJO_predictions_APO.csv")
 TJO_sym <- read.csv("/Users/carolineianniello/DEB/Astrangia_Add_My_Pet/Results/TJO_predictions_SYM.csv")
-
+#TJO_up_to_55 <- read.csv("/Users/carolineianniello/DEB/Astrangia_Add_My_Pet/Results/TJO_predictions_to_55C_APO_and_SYM.csv")
 TJO_apo$resp_pred <- Re(TJO_apo$resp_pred)  #MATLAB included some non-real numbers so just turning them into real numbers
 TJO_sym$resp_pred <- Re(TJO_sym$resp_pred)  #MATLAB included some non-real numbers so just turning them into real numbers
-
+#TJO_up_to_55$resp_pred_umolO2_gd <- Re(TJO_up_to_55$resp_pred_umolO2_gd) 
 
 #tW_apo$weight_pred <- Re(tW_apo$weight_pred)
 #tW_sym$weight_pred <- Re(tW_sym$weight_pred)
 ```
 
 
-
-```{r time dry mass}
-# #SMOOTH - APO
-# ggplot(tW_apo, aes(x = time)) +
-#   geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
-#   geom_smooth(aes(y = weight_pred), method = "loess", span = 0.4, se = FALSE, color = "blue", size = 1) +  # smoothed predicted
-#   labs(title = "Time vs. Dry Weight",
-#        x = "Time (days)",
-#        y = "Dry Weight (g)") +
-#   theme_minimal()
-# #LINE - APO
-# ggplot(tW_apo, aes(x = time)) +
-#   geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
-#   geom_line(aes(y = weight_pred), color = "blue", size = 1) +              # predicted
-#   labs(title = "Time vs. Dry Weight",
-#        x = "Time (days)",
-#        y = "Dry Weight (g)") +
-#   theme_minimal()
-# 
-# 
-# #LINE - SYM
-# ggplot(tW_sym, aes(x = time)) +
-#   geom_point(aes(y = weight_obs), color = "black", size = 2, shape = 16) +  # observed
-#   geom_line(aes(y = weight_pred), color = "blue", size = 1) +              # predicted
-#   labs(title = "Time vs. Dry Weight",
-#        x = "Time (days)",
-#        y = "Dry Weight (g)") +
-#   theme_minimal()
-# 
-# 
-# 
-# #COMBINED GRAPH
-# # Add symbiotic state to each dataset
-# tW_apo$sym_state <- "Apo"
-# tW_sym$sym_state <- "Sym"
-# 
-# # Combine datasets
-# tW_combined <- rbind(tW_apo, tW_sym)
-# 
-# # Plot
-# 
-# ggplot(tW_combined, aes(x = time)) +
-#   geom_point(aes(y = weight_obs, color = sym_state), size = 2.5, shape = 16) +  # observed points
-#   geom_smooth(aes(y = weight_pred, color = sym_state), size = 1) +  # smoothed predicted
-#   scale_color_manual(values = c("Apo" = "gray45", "Sym" = "brown")) +
-#   labs(title = "Time vs. Dry Weight",
-#        x = "Time (days)",
-#        y = "Dry Weight (g)") +
-#   facet_wrap(~sym_state,  dir="v") +
-#   theme_minimal() +
-#   theme(
-#     panel.spacing.x = unit(1, "lines"),  # wider space between panels
-#     panel.border = element_rect(color = "black", fill = NA, size = 1),  # borders around panels
-#     strip.background = element_blank()
-#   ) +
-#   
-```
 
 ```{r TJO Graphs - separate}
 #APO
@@ -107,9 +50,17 @@ ggplot(TJO_sym, aes(x = temperature)) +
 
 
 ```{r TJO Graphs - combined with jitter}
+
+#COMBINED GRAPH
+# Add symbiotic state to each dataset
+TJO_apo$sym_state <- "Aposymbiotic"
+TJO_sym$sym_state <- "Symbiotic"
+
+# Combine datasets
+TJO_combined <- rbind(TJO_apo, TJO_sym)
 ggplot(TJO_combined, aes(x = temperature)) +
   geom_point(aes(y = resp_obs, color = sym_state), 
-             size = 2.4, 
+             size = 3, 
              shape = 16,  
              position = position_jitter(width = 0.3),  
              alpha = 0.6) +  
@@ -124,19 +75,24 @@ ggplot(TJO_combined, aes(x = temperature)) +
   xlim(5,32) +
   theme_minimal() +
   theme(
-    axis.title.x = element_text(size = 16),  
-    axis.title.y = element_text(size = 16),  
-    axis.text.x = element_text(size = 13),   
-    axis.text.y = element_text(size = 13),
+    axis.title.x = element_text(size = 22),  
+    axis.title.y = element_text(size = 22),  
+    axis.text.x = element_text(size = 18),   
+    axis.text.y = element_text(size = 18),
     # Increase legend title and text size (double original?)
-    legend.title = element_text(size = 17),  # default is ~11, so size 22 here
-    legend.text = element_text(size = 14),    # default ~9, size 18 here
+    legend.title = element_text(size = 20),  # default is ~11, so size 22 here
+    legend.text = element_text(size = 18),    # default ~9, size 18 here
     # Increase legend keys (symbols) size
     legend.key.size = unit(1.5, "lines")  # default ~1 line, 1.5 or 2 lines to double symbol size
   )
+
+ggsave("high_res_TJO_plot.png", type = "cairo", dpi = 300)
 ```
 
 ```{r TJO - Combined no jitter}
+TJO_apo$sym_state <- "Aposymbiotic"
+TJO_sym$sym_state <- "Symbiotic"
+TJO_combined <- rbind(TJO_apo,TJO_sym)
 # Plot with jittered points and different shapes for Apo and Sym
 ggplot(TJO_combined, aes(x = temperature)) +
   # Jittered points with larger dodge and transparent dots
@@ -166,7 +122,55 @@ ggplot(TJO_combined, aes(x = temperature)) +
   ) 
 ```
 
-```{r}
 
+#ARCHIVES
+```{r TJO up to 55 combined with Jitter}
+
+ggplot() +
+   geom_point(
+     data = TJO_combined,
+     aes(x = temperature, y = resp_obs, color = sym_state),
+     position = position_jitter(width = 0.3),
+     alpha = 0.5, size = 2
+   ) +
+# Plot predicted lines
+  geom_line(
+    data = TJO_up_to_55,
+    aes(
+      x = temperature_C,
+      y = resp_pred_umolO2_gd,
+      color = symbiotic_state,
+      group = symbiotic_state
+    ),
+    size = 1.5
+  ) +
+
+  # Color scheme (tweak if you like)  
+  scale_color_manual(
+    values = c("Aposymbiotic" = "#636363", "Symbiotic" = "#964B00"),
+    labels = c("Aposymbiotic", "Symbiotic")
+  ) +
+
+  labs(
+    title = "Temperature vs. Predicted O"[2]~ "Consumption up to 55°C",
+    x = "Temperature (°C)",
+    y = expression("O"[2]~"Consumption (µmol/g/d)"),
+    color = "Symbiotic State"
+  ) +
+  xlim(6, 55) +
+  ylim(0, NA) +  # Remove NA if you want to set max Y explicitly
+  theme_minimal(base_size = 18) +
+  theme(
+    plot.title = element_text(size = 22, hjust = 0.5),
+    axis.title.x = element_text(size = 20),
+    axis.title.y = element_text(size = 20),
+    axis.text = element_text(size = 16),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 18),
+    legend.key.size = unit(1.5, "lines")
+  )
+
+# Save the plot as high-res PNG
+ggsave("predicted_respiration_up_to_55C.png", dpi = 300, width = 10, height = 7)
 ```
 
