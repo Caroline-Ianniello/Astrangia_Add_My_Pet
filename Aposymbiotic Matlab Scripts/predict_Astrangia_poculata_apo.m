@@ -95,7 +95,7 @@ p_ref = p_Am * L_m^2; % max assimilation power
 %L = (f * p_Am / p_M)^(1/3);  % length at ultimate based on DEB balance
 %L = (Wd_i/ del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight
 %L = (weight.TJO/ del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight
-L = sqrt(area.TJO); % cm, structural length from surface area (isomorphic assumption, SA = L^2)
+L = (sqrt(area.TJO))*del_Mi; % cm, structural length from surface area (isomorphic assumption, SA = L^2), %make del_M
 
 % % L = (Wd_i / del_W / d_V / (1 + f * w))^(1/3); % structural length from dry weight
 pACSJGRD = p_ref * scaled_power(L, f, pars_p, l_b, l_p); % J/d, powers
@@ -104,6 +104,7 @@ J_M =  - (n_M \ n_O) * eta_O * pACSJGRD(:, [1 7 5])'; % mol/d: C, H, O, N
 % Convert to µmol O2/d.g dry mass
 %EJO = -1e6 * J_M(3,:)' ./ weight.TJO; % µmol O2/g dry weight/day
 EJO = -1e6 * J_M(3,:)' ./ area.TJO; % µmol O2/cm2/day
+%assume 1g per cubic cm
 % Apply temperature correction
 %TC_TJO = tempcorr(C2K(TJO(:,1)), T_ref, pars_T); %pars_T is the vector of arrhenius parameters
 TC_TJO = tempcorr(C2K(TJO(:,1)), T_ref, pars_T); %pars_T is the vector of arrhenius parameters

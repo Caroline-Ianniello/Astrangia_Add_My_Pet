@@ -151,7 +151,7 @@ label.TJO = {'Temperature', 'O_2 consumption per cm squared per day'};
 bibkey.TJO = 'Aichelman et al. 2019';
 comment.TJO = 'Dark Respiration, Corrected, From Aichelman et al. 2019, Apo only'
 %weight.TJO= 0.114; units.weight.TJO = {'cm2'};  label.weight.TJO= {'dry weight, assuming a polyp number of 50 from weight per polyp from my experiment day 0 values'}; 
-area.TJO = 3; units.area.TJO = 'cm2'; label.area.TJO = 'average surface area of apo corals used in respiration assay'; %Average apo SA from Caroline's biomass experiment = 3.339cm2, Average sym SA from Caroline's biomass experiment = 3.026
+area.TJO = 3.9949; units.area.TJO = 'cm2'; label.area.TJO = 'average surface area of apo corals used in respiration assay'; %Average apo SA from Aichelman et al. 2019, Rhode Island collected
 temp.TJO = C2K(TJO(:,1));  % convert temperature to Kelvin
 
 % Data to inform functional response -- X (food density) and I (irradiance)
