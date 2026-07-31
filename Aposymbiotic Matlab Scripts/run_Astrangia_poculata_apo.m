@@ -30,4 +30,4 @@ load('results_Astrangia_poculata_apo.mat')
 cPar = parscomp_st(par);
 
 cPar.p_Am   % Assimilation rate (J/d·cm^2)
-cPar.E_m    % Maximum reserve density/capacity (J/cm^3)o
+cPar.E_m    % Maximum reserve density/capacity (J/cm^3)

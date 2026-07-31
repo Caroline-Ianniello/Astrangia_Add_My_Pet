@@ -67,91 +67,90 @@ data.RQ  = 0.8;   units.RQ  = '-';   label.RQ  = 'Respiratory quotient';    bibk
   
 % uni-variate data
 
-% Temperature (°C) vs O2 consumption in original units -- umol O2/cm2/hour NOTE - DEB
+% Temperature (°C) vs O2 consumption (µmol O2/g dry mass/hour) NOTE - DEB
 % predicts per day, so we will do the conversion below
 TJO = [ ...
 
-6	0.194849874
-6	0.276815251
-6	0.049484621
-6	0.050066932
-6	0.04705331
-6	0.007992441
-6	0.12366138
-6	0.011152473
-9	0.19386449
-9	0.021232369
-9	0.80253034
-9	0.371578282
-9	0.193899756
-9	0.25520982
-9	0.388631625
-9	0.279713763
-12	0.252273427
-12	0.195868222
-12	0.409575505
-12	0.211211895
-12	0.142776738
-12	0.174759809
-12	0.215242537
-12	0.122040697
-15	0.080952064
-15	0.594019197
-15	0.76187957
-15	0.688811102
-15	0.218008413
-15	0.311917593
-15	0.505242321
-15	0.220629116
-18	0.273695188
-18	1.035763094
-18	1.180497883
-18	0.369083503
-18	0.519483468
-18	0.579621143
-18	0.487166843
-18	0.010678059
-22	0.659681077
-22	1.905420041
-22	2.036969935
-22	0.821638492
-22	1.315325557
-22	1.127382226
-22	1.064572582
-22	1.017853467
-26	0.745652276
-26	1.834411518
-26	2.293274434
-26	0.919764091
-26	1.616443
-26	1.056602155
-26	0.960785911
-26	1.255399453
-29	0.672941594
-29	2.070548836
-29	1.370394038
-29	1.002800359
-29	0.856438066
-29	0.539784699
-29	0.945054256
-29	0.830153604
-32	0.570947806
-32	0.947363049
-32	0.806157015
-32	0.715459106
-32	0.959627841
-32	0.559503517
-32	0.777846575
-32	0.489549299
+18	145.3116201
+18	549.91253
+18	626.7558491
+18	195.9556621
+18	275.8067649
+18	307.7353605
+18	258.6490605
+18	5.66924857
+12	133.9382715
+15	42.9794753
+6	103.4506711
+9	102.9275061
+12	103.9913375
+15	315.3796475
+6	146.9681396
+9	11.2727957
+12	217.4538787
+15	404.5009175
+6	26.27262285
+9	426.0834279
+12	112.1376772
+15	365.7070405
+6	26.58178632
+9	197.2802027
+12	75.8037409
+15	115.7461186
+6	24.98177903
+9	102.9462297
+12	92.78435316
+15	165.6048509
+6	4.243386809
+9	135.497276
+12	114.2776459
+15	268.2457838
+6	65.65491928
+9	206.334249
+12	64.79445815
+15	117.1375154
+6	5.921126827
+9	148.5070321
+22	350.2411817
+26	395.8854413
+29	357.2815218
+32	303.130469
+22	1011.635152
+26	973.9349516
+29	1099.306159
+32	502.9787353
+22	1081.478281
+26	1217.556749
+29	727.5764669
+32	428.0089204
+22	436.2284237
+26	488.3257582
+29	532.4117896
+32	379.8551323
+22	698.3392331
+26	858.2100142
+29	454.7043879
+32	509.4904201
+22	598.5554184
+26	560.9765086
+29	286.5851961
+32	297.0544098
+22	565.2082076
+26	510.1052684
+29	501.7529393
+32	412.9781998
+22	540.4038611
+26	666.5229658
+29	440.7493096
+32	259.913966
 ];
 TJO(:,2)=TJO(:,2)*24; % convert hourly to daily rate
 data.TJO = TJO;
-units.TJO = {'°C', 'µmol O2/cm2/d'}; 
-label.TJO = {'Temperature', 'O_2 consumption per cm squared per day'};
+units.TJO = {'°C', 'µmol O2/g dry mass/d'}; 
+label.TJO = {'Temperature', 'O_2 consumption per g dry weight per day'};
 bibkey.TJO = 'Aichelman et al. 2019';
-comment.TJO = 'Dark Respiration, Corrected, From Aichelman et al. 2019, Apo only'
-%weight.TJO= 0.114; units.weight.TJO = {'cm2'};  label.weight.TJO= {'dry weight, assuming a polyp number of 50 from weight per polyp from my experiment day 0 values'}; 
-area.TJO = 3.9949; units.area.TJO = 'cm2'; label.area.TJO = 'average surface area of apo corals used in respiration assay'; %Average apo SA from Aichelman et al. 2019, Rhode Island collected
+comment.TJO = 'Extrapolated from Aichelman et al. 2019, Apo only'
+weight.TJO= 0.007524441; units.weight.TJO = {'g'};  label.weight.TJO= {'dry weight, using my average weight per surface area for apo corals and average surface area of Apos used in Hannahs Experiment'}; 
 temp.TJO = C2K(TJO(:,1));  % convert temperature to Kelvin
 
 % Data to inform functional response -- X (food density) and I (irradiance)
@@ -170,20 +169,14 @@ weights.tp = 5*weights.tp;
 weights.L0 = 5*weights.L0;
 weights.Lb = 5*weights.Lb; 
 weights.TJO=5*weights.TJO; %does not affect the regular run but does
-
 %impact estimation procedure
 
 %% set pseudodata and respective weights
 [data, units, label, weights] = addpseudodata(data, units, label, weights);
 
-%adjust pseudodata influence
-%weights.psd.p_M = 0;
-%weights.psd.v = 10*weights.psd.v;
-
 %% pack auxData and txtData for output
 auxData.X= X; auxData.I= I;
-%auxData.weight = weight;
-auxData.area = area;
+auxData.weight = weight;
 auxData.temp = temp;
 %auxData.Wd0 = Wd0;
 %auxData.temp.Ri = C2K(18.9); %getting rid of reproduction data

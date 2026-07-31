@@ -14,7 +14,7 @@ resp_per_cm2 = data.Rdark_umol_cm2_hr_corr_abs_value;  % Oxygen consumption rate
 
 Tref = 20 + 273.15;
 %Extract mu 
-mu=0.78;          % Ran first iteration with mu=1.0 as a starting point. Then Optimization indicated mu=0.78 and stabilized there, so proceeded with that value as a start value.
+mu=364.53;          % Ran first iteration with mu=1.0 as a starting point. Then Optimization indicated mu=0.78 and stabilized there, so proceeded with that value as a start value.
 Tinit = [8000;  310;  10000; mu]; % T_A,  T_H,  T_AH, mu  
 
 % optimization

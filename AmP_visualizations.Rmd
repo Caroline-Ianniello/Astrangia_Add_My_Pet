@@ -71,8 +71,8 @@ ggplot(TJO_combined, aes(x = temperature)) +
        x = "Temperature (°C)",
        y = expression("O"[2]~"Consumption (µmol/g/d)"), 
        color = "Symbiotic State") +
-  ylim(0,45000) +
-  xlim(5,32) +
+ # ylim(0,35000) +
+#  xlim(5,32) +
   theme_minimal() +
   theme(
     axis.title.x = element_text(size = 22),  
@@ -172,5 +172,9 @@ ggplot() +
 
 # Save the plot as high-res PNG
 ggsave("predicted_respiration_up_to_55C.png", dpi = 300, width = 10, height = 7)
+```
+
+```{r}
+
 ```
 
