@@ -35,7 +35,7 @@ ggplot(TJO_apo, aes(x = temperature)) +
   geom_smooth(aes(y = resp_pred), method = "loess", span = 0.4, se = FALSE, color = "blue", size = 1) +  # smoothed predicted
   labs(title = "Temperature vs. O2 Consumption",
        x = "Temperature (°C)",
-       y = "O2 Consumption (µmol/g/d)") +
+        y = expression(O[2] ~ "Consumption (" * mu * "mol" ~ g^-1 ~ d^-1 * ")")) +
   theme_minimal()
 
 #SYM
@@ -67,9 +67,9 @@ ggplot(TJO_combined, aes(x = temperature)) +
   geom_smooth(aes(y = resp_pred, color = sym_state), 
               method = "loess", span = 0.4, se = FALSE, size = 1.25) +  
   scale_color_manual(values = c("Aposymbiotic" = "#636363", "Symbiotic" = "#964B00")) +
-  labs(title = "Temperature vs. O2 Consumption",
+  labs(
        x = "Temperature (°C)",
-       y = expression("O"[2]~"Consumption (µmol/g/d)"), 
+       y = expression(O[2] ~ "Consumption (" * mu * "mol" ~ g^-1 ~ d^-1 * ")"), 
        color = "Symbiotic State") +
  # ylim(0,35000) +
 #  xlim(5,32) +
@@ -109,7 +109,7 @@ ggplot(TJO_combined, aes(x = temperature)) +
   # Add titles and axis labels
   labs(title = "Temperature vs. O2 Consumption",
        x = "Temperature (°C)",
-       y = expression("O"[2]~"Consumption (µmol/g/d)"), 
+       y = expression(O[2] ~ "Consumption (" * mu * "mol" ~ g^-1 ~ d^-1 * ")"), 
        color = "Symbiotic State") +
   
   # Apply minimal theme and increase axis label sizes and ticks
